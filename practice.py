@@ -14,3 +14,4 @@ model.fit(X, y)
 
 print(model.coef_)     # this is m
 print(model.intercept_)# this is c
+print(model.predict([[16]]))
