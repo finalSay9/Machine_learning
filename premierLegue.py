@@ -24,6 +24,6 @@ print("Coefficients (m for each feature):", model.coef_)
 
 # 5. Predict points for a new team
 # Let's predict for a team with 20 played, 10 wins, 4 draws, and 6 losses
-new_team_stats = [[10, 4]]
+new_team_stats = [[20, 17, 4, 6]]
 prediction = model.predict(new_team_stats)
 print(f"Predicted total points: {prediction[0]:.1f}")
