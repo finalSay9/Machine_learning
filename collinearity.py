@@ -1,7 +1,15 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge
 
 
-X = np.narray[[1,1], [2,2],[3,6],[4.1,6.3]]
-y = np.narray[10,20,30,40]
+X = np.array([[1,1], [2,2.02],[3,3],[4.1,4.3]])
+y = np.array([10,20,30,40])
+osl = LinearRegression()
+osl.fit(X,y)
+
+print('ols coefficients: ', osl.coef_)
+
+ridge = Ridge(alpha=1.0)
+ridge.fit(X,y)
+print('ridge coefficients: ', ridge.coef_)
