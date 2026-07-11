@@ -17,4 +17,6 @@ osl = LinearRegression()
 osl.fit(X,y)
 
 print('osl coefficients: ', osl.coef_)
-print('osl intercept: ', osl.intercept)
+print('osl intercept: ', osl.intercept_)
+
+print('predict: ', osl.predict([[12,14]]))
