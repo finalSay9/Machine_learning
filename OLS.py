@@ -14,3 +14,4 @@ X = np.array([
 y = np.array([110,120,130,140,150])
 
 osl = LinearRegression()
+osl.fit(X,y)
