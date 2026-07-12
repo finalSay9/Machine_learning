@@ -4,10 +4,10 @@ from sklearn.linear_model import LinearRegression
 
 
 X = np.array([
-    [11,13],
-    [14,15],
+    [11,21],
+    [13,23],
     [17,17],
-    [19,20],
+    [19,22],
     [20,22]
 ])
 
