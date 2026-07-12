@@ -1,20 +1,52 @@
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
-import numpy as np
 
+# ----------------------------
+# Create Dataset
+# ----------------------------
 
-#school data
 school_data = pd.DataFrame({
-    'score': [40,44,66,77,90,11,70,90,88,55,66,77,88,99],
-    'pass': [0,0,1,1,1,0,1,1,1,0,1,1,1,1]
-    })
+    "score": [40, 44, 66, 77, 90, 11, 70, 90, 88, 55, 66, 77, 88, 99],
+    "pass":  [0,  0,  1,  1,  1,  0,  1,  1,  1,  0,  1,  1,  1,  1]
+})
 
-model = LogisticRegression()
-model.fit(school_data[['score']], school_data['pass']) 
+# ----------------------------
+# Features (X) and Target (y)
+# ----------------------------
 
-#predict the exact category
+X = school_data[["score"]]
+y = school_data["pass"]
 
-new_score = [[35],[60],[90],[9]]
-predictions = model.predict(new_scores)
+# ----------------------------
+# Create and Train Model
+# ----------------------------
 
-print("Predicted Outcomes (0=Fail, 1=Pass):", predictions)
+logistic_model = LogisticRegression()
+logistic_model.fit(X, y)
+
+# ----------------------------
+# New Students
+# ----------------------------
+
+new_scores = pd.DataFrame({
+    "score": [35, 60, 90, 9]
+})
+
+# ----------------------------
+# Predictions
+# ----------------------------
+
+predictions = logistic_model.predict(new_scores)
+probabilities = logistic_model.predict_proba(new_scores)
+
+# ----------------------------
+# Display Results
+# ----------------------------
+
+results = new_scores.copy()
+
+results["Prediction"] = predictions
+results["Probability of Fail"] = probabilities[:, 0]
+results["Probability of Pass"] = probabilities[:, 1]
+
+print(results)
