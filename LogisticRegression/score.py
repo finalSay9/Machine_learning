@@ -9,7 +9,8 @@ data = pd.read_csv('../datasets/student.csv')
 placement_status  = data['placement_status'].value_counts()
 
 #setting aside the test set
-def
+def split_train_test(data, test_ratio):
+    shuffled_indeces = np.random.
 
 
 plots = data.hist(bins=50, figsize=(20,15))
