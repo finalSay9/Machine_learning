@@ -1,14 +1,18 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 
+data = pd.read_csv("../datasets/student.csv")
 
+# Check the data
+print(data.head())
+print(data.columns)
 
-data = pd.read_csv('../datasets/student.csv')
+# Target distribution
+placement_status = data["placement_status"].value_counts()
 
-placement_status  = data['placement_status'].value_counts()
+# Reproducible split
+np.random.seed(42)
 
-#setting aside the test set
 def split_train_test(data, test_ratio):
     shuffled_indices = np.random.permutation(len(data))
     test_set_size = int(len(data) * test_ratio)
@@ -16,9 +20,11 @@ def split_train_test(data, test_ratio):
     train_indices = shuffled_indices[test_set_size:]
     return data.iloc[train_indices], data.iloc[test_indices]
 
+train_set, test_set = split_train_test(data, 0.2)
 
-plots = data.hist(bins=50, figsize=(20,15))
-plt.show()
-print(data.info())
+print(f"Training samples: {len(train_set)}")
+print(f"Testing samples: {len(test_set)}")
+
+data.info()
 print(placement_status)
 print(data.describe())
