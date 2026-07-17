@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from zlib import crc32
 
 data = pd.read_csv("../datasets/student.csv")
 
@@ -10,20 +11,9 @@ print(data.columns)
 # Target distribution
 placement_status = data["placement_status"].value_counts()
 
-# Reproducible split
-np.random.seed(42)
 
-def split_train_test(data, test_ratio):
-    shuffled_indices = np.random.permutation(len(data))
-    test_set_size = int(len(data) * test_ratio)
-    test_indices = shuffled_indices[:test_set_size]
-    train_indices = shuffled_indices[test_set_size:]
-    return data.iloc[train_indices], data.iloc[test_indices]
-
-train_set, test_set = split_train_test(data, 0.2)
-
-print(f"Training samples: {len(train_set)}")
-print(f"Testing samples: {len(test_set)}")
+def test_set_check(identifier, test_ratio):
+    return crc32(np.int64(identifier)) & 0xffffffff < test_ratio * 2**32
 
 data.info()
 print(placement_status)
