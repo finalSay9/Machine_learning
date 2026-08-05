@@ -5,4 +5,4 @@ input2 = [2,1,3,0]
 
 input1 = np.array([input1])
 input2 = np.array([input2]).T
-print(input1)
+print(np.dot(input1, input2))
