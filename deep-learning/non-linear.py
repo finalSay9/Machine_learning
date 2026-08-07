@@ -4,7 +4,7 @@ import random
 
 class Dense_layer:
     def __init__(self, n_inputs, n_nuerons):
-        #initialize weights and balances
+        #initialize weights and biases
         self.weights = 0.01 * np.random.randn(n_inputs, n_nuerons)
         self.biases = np.zeros((1, n_nuerons))
         
