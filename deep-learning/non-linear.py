@@ -36,11 +36,19 @@ class Dense_layer:
             inputs, self.weights
             ) + self.biases
 
-nnfs.init()
+#create dataset
+X,y = spiral_data(samples=100, classes=3)
 
-#lets create an object
-input_neuron = Dense_layer(2,4)
-print(input_neuron.weights)
-print(input_neuron.biases)
+
+
+"""
+create a dense layer with 2 input
+features and 3 output values
+"""
+dense1 = Dense_layer(2,3)
+
+
+
+
 
 
