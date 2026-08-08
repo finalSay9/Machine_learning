@@ -1,3 +1,4 @@
+import nnfs
 from nnfs.datasets import spiral_data
 import numpy as np
 import random
@@ -12,7 +13,12 @@ class Dense_layer:
         weight matrix
         """
         self.weights = 0.01 * np.random.randn(n_inputs, n_nuerons)
+        """
+        here 1 represent 1 row and n_neurons represent the number of
+        columns in the biases
+        """
         self.biases = np.zeros((1, n_nuerons))
+
         
 
 
@@ -23,5 +29,11 @@ class Dense_layer:
         from inputs, weights and biases
         """
         pass
+
+nnfs.init()
+
+#lets create an object
+input_neuron = Dense_layer(2,4)
+print(input_neuron)
 
 
