@@ -4,7 +4,7 @@ import numpy as np
 import random
 
 class Dense_layer:
-    def __init__(self, n_inputs, n_nuerons):
+    def __init__(self, n_inputs, n_neurons):
         #initialize weights and biases
         #Guassian distribution
         """
@@ -12,12 +12,16 @@ class Dense_layer:
         the n_neurons represent the number of columns in the
         weight matrix
         """
-        self.weights = 0.01 * np.random.randn(n_inputs, n_nuerons)
+        self.weights = 0.01 * np.random.randn(
+            n_inputs,
+              n_neurons)
         """
         here 1 represent 1 row and n_neurons represent the number of
         columns in the biases
         """
-        self.biases = np.zeros((1, n_nuerons))
+        self.biases = np.zeros(
+            (1, n_neurons)
+            )
 
         
 
@@ -28,12 +32,15 @@ class Dense_layer:
         calculate output values
         from inputs, weights and biases
         """
-        pass
+        self.inputs = np.dot(
+            inputs, self.weights
+            ) + self.biases
 
 nnfs.init()
 
 #lets create an object
 input_neuron = Dense_layer(2,4)
-print(input_neuron)
+print(input_neuron.weights)
+print(input_neuron.biases)
 
 
