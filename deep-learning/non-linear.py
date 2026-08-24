@@ -25,14 +25,12 @@ class Dense_layer:
 
         
 
-
-
     def forward_pass(self,inputs):
         """
         calculate output values
         from inputs, weights and biases
         """
-        self.inputs = np.dot(
+        self.output = np.dot(
             inputs, self.weights
             ) + self.biases
 
@@ -46,6 +44,14 @@ create a dense layer with 2 input
 features and 3 output values
 """
 dense1 = Dense_layer(2,3)
+
+"""
+now we have to perfom the forward pass
+of our training data through this layer
+"""
+dense1.forward_pass(X)
+
+print(dense1.output[:6])
 
 
 
