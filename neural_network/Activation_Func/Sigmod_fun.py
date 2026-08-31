@@ -9,5 +9,6 @@ class Sigmod():
         #numerically stable sigmod
         return np.where(
             value >= 0,
-            1 / (1 + np.exp(-value))
+            1 / (1 + np.exp(-value)),
+            np.exp(value) / (1 + np.exp(value))
         )
