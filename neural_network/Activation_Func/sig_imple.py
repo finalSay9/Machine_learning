@@ -26,5 +26,8 @@ class SigmImplementation(Sigmod_fun):
 
     #the forward passs
     def forward(self):
-       for i in zip(inputs, weights):
+       for i in zip(self.inputs, self.weights):
+          result = self.inputs[i] * self.weights
+          sum += result
+          return sum
           
