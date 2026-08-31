@@ -7,4 +7,7 @@ class Sigmod():
 
     def sig_forward(self, value):
         #numerically stable sigmod
-        return np.where()
+        return np.where(
+            value >= 0,
+            1 / (1 + np.exp(-value))
+        )
