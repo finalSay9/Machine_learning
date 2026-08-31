@@ -19,6 +19,12 @@ class SigmImplementation(Sigmod_fun):
         
     ]
     bias1 = [1, 2, 3]
+    sum = 0
 
     def __init__(self):
      pass
+
+    #the forward passs
+    def forward(self):
+       for i in zip(inputs, weights):
+          
